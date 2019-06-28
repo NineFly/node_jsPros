@@ -6,8 +6,7 @@ var url = require('url');
 //实现本地链接
 var pool = mysql.createPool({
     host: 'localhost',
-    user: 'root',
-    password: 'YU72124009lin%',
+    
     database: 'first_db',
     port: '3306'
 });
@@ -49,9 +48,8 @@ router.get('/save', function(req, res, next) {
         'name=\'' + name + '\', sex=' + sex +
         ', age= ' + age + ', hobbies=\'' + hobbies + '\';';
 
-    console.log(JSON.stringify(sql))
     query(sql, '').then(function (result) {
-        res.end(JSON.stringify(result));
+        res.send('OK,保存数据成功');
     },function (error) {
 
     });
@@ -71,7 +69,7 @@ router.get('/delete', function(req, res, next) {
 
     console.log(JSON.stringify(sql))
     query(sql, '').then(function (result) {
-        res.end(JSON.stringify(result));
+        res.send('OK,删除数据成功');
     },function (error) {
 
     });
@@ -99,7 +97,7 @@ router.get('/update', function(req, res, next) {
 
     console.log(JSON.stringify(sql))
     query(sql, '').then(function (result) {
-        res.end(JSON.stringify(result));
+        res.send('OK,更新数据成功');
     },function (error) {
 
     });
@@ -112,7 +110,7 @@ router.get('/getUserList', function(req, res, next) {
     res.header("Content-Type", "application/json; charset=utf-8");
 
     query('SELECT * FROM user', '').then(function (result) {
-        res.end(JSON.stringify(result));
+        res.send(JSON.stringify(result));
     },function (error) {
 
     });
