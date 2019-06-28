@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-var http = require("http");
-//引入数据库
 var mysql=require('mysql');
 var url = require('url');
 //实现本地链接
